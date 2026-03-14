@@ -1,7 +1,9 @@
 namespace ArchLens.Contracts.Events;
 
-public record ProcessingStartedEvent(
-    Guid AnalysisId,
-    Guid DiagramId,
-    string StoragePath,
-    DateTime Timestamp);
+public record ProcessingStartedEvent
+{
+    public Guid AnalysisId { get; init; }
+    public Guid DiagramId { get; init; }
+    public string StoragePath { get; init; } = string.Empty;
+    public DateTime Timestamp { get; init; }
+}
