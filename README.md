@@ -2,12 +2,12 @@
 
 > **Contratos de Eventos para Comunicação entre Microsserviços**
 > Hackathon FIAP - Fase 5 | Pós-Tech Software Architecture + IA para Devs
+>
+> **Autor:** Rafael Henrique Barbosa Pereira (RM366243)
 
 [![.NET 9.0](https://img.shields.io/badge/.NET-9.0-512BD4?logo=dotnet)](https://dotnet.microsoft.com/)
 [![MassTransit](https://img.shields.io/badge/MassTransit-8.x-512BD4)](https://masstransit.io/)
 [![RabbitMQ](https://img.shields.io/badge/RabbitMQ-3.x-FF6600?logo=rabbitmq)](https://www.rabbitmq.com/)
-
-**Autor:** Rafael Henrique Barbosa Pereira (RM366243)
 
 ---
 
@@ -388,6 +388,4 @@ dotnet pack -o ./nupkg
 
 ---
 
-**Autor:** Rafael Henrique Barbosa Pereira (RM366243)
-**Instituição:** FIAP - Pós-Tech Software Architecture + IA para Devs
-**Fase:** 5 - Hackathon (12SOAT + 6IADT)
+**Autor:** Rafael Henrique Barbosa Pereira (RM366243) | FIAP - Pós-Tech Software Architecture + IA para Devs | Fase 5 - Hackathon (12SOAT + 6IADT)
