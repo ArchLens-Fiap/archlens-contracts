@@ -80,7 +80,7 @@ jobs:
           dotnet sonarscanner begin \
             /k:"ArchLens-Fiap_archlens-contracts" \
             /o:"archlens-fiap" \
-            /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
+            /d:sonar.token="$SONAR_TOKEN" \
             /d:sonar.host.url="https://sonarcloud.io"
 
       - name: Build
@@ -89,7 +89,7 @@ jobs:
 
       - name: SonarCloud End
         if: steps.check-token.outputs.skip != 'true'
-        run: dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+        run: dotnet sonarscanner end /d:sonar.token="$SONAR_TOKEN"
 
   security-scan:
     name: Security Scan
