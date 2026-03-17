@@ -85,7 +85,7 @@ jobs:
             /o:"archlens-fiap" \
             /d:sonar.token="$SONAR_TOKEN" \
             /d:sonar.host.url="https://sonarcloud.io" \
-            /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.cobertura.xml" \
+            /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml" \
             /d:sonar.coverage.exclusions="**/tests/**,**/*.Tests/**" \
             /d:sonar.exclusions="**/tests/**"
 
@@ -95,7 +95,7 @@ jobs:
 
       - name: Test with coverage
         if: steps.check-token.outputs.skip != 'true'
-        run: dotnet test ArchLens.Contracts.sln --no-build --configuration Release --collect:"XPlat Code Coverage" --results-directory ./TestResults
+        run: dotnet test ArchLens.Contracts.sln --no-build --configuration Release --collect:"XPlat Code Coverage" --results-directory ./TestResults -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
 
       - name: SonarCloud End
         if: steps.check-token.outputs.skip != 'true'
