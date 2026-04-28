@@ -185,94 +185,87 @@ graph LR
 | Campo | Tipo | Descrição |
 |-------|------|-----------|
 | `DiagramId` | `Guid` | ID do diagrama |
-| `UserId` | `Guid` | ID do usuário |
 | `FileName` | `string` | Nome do arquivo |
+| `FileHash` | `string` | Hash SHA-256 do arquivo |
 | `StoragePath` | `string` | Caminho no MinIO |
-| `ContentType` | `string` | Tipo MIME do arquivo |
-| `UploadedAt` | `DateTime` | Data/hora do upload |
-| `CorrelationId` | `Guid` | ID de correlação |
+| `UserId` | `string?` | ID do usuario (nullable) |
+| `Timestamp` | `DateTime` | Data/hora do upload |
 
 ### ProcessingStartedEvent
 
 | Campo | Tipo | Descrição |
 |-------|------|-----------|
-| `AnalysisId` | `Guid` | ID da análise |
+| `AnalysisId` | `Guid` | ID da analise |
 | `DiagramId` | `Guid` | ID do diagrama |
-| `UserId` | `Guid` | ID do usuário |
-| `StoragePath` | `string` | Caminho do diagrama |
-| `StartedAt` | `DateTime` | Data/hora do início |
-| `CorrelationId` | `Guid` | ID de correlação |
+| `StoragePath` | `string` | Caminho do diagrama no MinIO |
+| `Timestamp` | `DateTime` | Data/hora do inicio |
 
 ### AnalysisCompletedEvent
 
 | Campo | Tipo | Descrição |
 |-------|------|-----------|
-| `AnalysisId` | `Guid` | ID da análise |
+| `AnalysisId` | `Guid` | ID da analise |
 | `DiagramId` | `Guid` | ID do diagrama |
-| `Result` | `string` | Resultado da análise (JSON) |
-| `Provider` | `string` | Provider IA utilizado |
-| `CompletedAt` | `DateTime` | Data/hora da conclusão |
-| `CorrelationId` | `Guid` | ID de correlação |
+| `ResultJson` | `string` | Resultado consolidado da analise (JSON) |
+| `ProvidersUsed` | `IReadOnlyList<string>` | Lista de providers IA utilizados |
+| `ProcessingTimeMs` | `long` | Tempo de processamento em milissegundos |
+| `Timestamp` | `DateTime` | Data/hora da conclusao |
 
 ### AnalysisFailedEvent
 
 | Campo | Tipo | Descrição |
 |-------|------|-----------|
-| `AnalysisId` | `Guid` | ID da análise |
+| `AnalysisId` | `Guid` | ID da analise |
 | `DiagramId` | `Guid` | ID do diagrama |
-| `Reason` | `string` | Motivo da falha |
-| `FailedAt` | `DateTime` | Data/hora da falha |
-| `CorrelationId` | `Guid` | ID de correlação |
+| `ErrorMessage` | `string` | Mensagem de erro |
+| `FailedProviders` | `IReadOnlyList<string>` | Providers que falharam |
+| `Timestamp` | `DateTime` | Data/hora da falha |
 
 ### StatusChangedEvent
 
 | Campo | Tipo | Descrição |
 |-------|------|-----------|
-| `AnalysisId` | `Guid` | ID da análise |
-| `UserId` | `Guid` | ID do usuário |
+| `AnalysisId` | `Guid` | ID da analise |
 | `OldStatus` | `string` | Status anterior |
 | `NewStatus` | `string` | Novo status |
-| `ChangedAt` | `DateTime` | Data/hora da mudança |
-| `CorrelationId` | `Guid` | ID de correlação |
+| `Timestamp` | `DateTime` | Data/hora da mudanca |
 
 ### GenerateReportCommand
 
 | Campo | Tipo | Descrição |
 |-------|------|-----------|
-| `AnalysisId` | `Guid` | ID da análise |
+| `AnalysisId` | `Guid` | ID da analise |
 | `DiagramId` | `Guid` | ID do diagrama |
-| `AnalysisResult` | `string` | Resultado da análise (JSON) |
-| `UserId` | `Guid` | ID do usuário |
-| `RequestedAt` | `DateTime` | Data/hora da solicitação |
-| `CorrelationId` | `Guid` | ID de correlação |
+| `UserId` | `string?` | ID do usuario (nullable) |
+| `ResultJson` | `string` | Resultado da analise (JSON) |
+| `ProvidersUsed` | `IReadOnlyList<string>` | Providers utilizados |
+| `ProcessingTimeMs` | `long` | Tempo de processamento em ms |
+| `Timestamp` | `DateTime` | Data/hora da solicitacao |
 
 ### ReportGeneratedEvent
 
 | Campo | Tipo | Descrição |
 |-------|------|-----------|
-| `ReportId` | `Guid` | ID do relatório |
-| `AnalysisId` | `Guid` | ID da análise |
-| `StoragePath` | `string` | Caminho do relatório |
-| `GeneratedAt` | `DateTime` | Data/hora da geração |
-| `CorrelationId` | `Guid` | ID de correlação |
+| `ReportId` | `Guid` | ID do relatorio |
+| `AnalysisId` | `Guid` | ID da analise |
+| `DiagramId` | `Guid` | ID do diagrama |
+| `Timestamp` | `DateTime` | Data/hora da geracao |
 
 ### ReportFailedEvent
 
 | Campo | Tipo | Descrição |
 |-------|------|-----------|
-| `AnalysisId` | `Guid` | ID da análise |
-| `Reason` | `string` | Motivo da falha |
-| `FailedAt` | `DateTime` | Data/hora da falha |
-| `CorrelationId` | `Guid` | ID de correlação |
+| `AnalysisId` | `Guid` | ID da analise |
+| `DiagramId` | `Guid` | ID do diagrama |
+| `ErrorMessage` | `string` | Mensagem de erro |
+| `Timestamp` | `DateTime` | Data/hora da falha |
 
 ### UserAccountDeletedEvent
 
 | Campo | Tipo | Descrição |
 |-------|------|-----------|
-| `UserId` | `Guid` | ID do usuário deletado |
-| `Email` | `string` | Email do usuário |
-| `DeletedAt` | `DateTime` | Data/hora da exclusão |
-| `CorrelationId` | `Guid` | ID de correlação |
+| `UserId` | `Guid` | ID do usuario deletado |
+| `Timestamp` | `DateTime` | Data/hora da exclusao |
 
 ---
 
